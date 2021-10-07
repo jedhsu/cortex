@@ -24,3 +24,4 @@ pub trait ScalarMul: X where X: TensorOp + BinOp<Tensor, Tensor> + Props, Props:
         Let(ScalarMul(MatMul(x, y), w), MatMul(x, ScalarMul(y, w),));
     }
 }
+
