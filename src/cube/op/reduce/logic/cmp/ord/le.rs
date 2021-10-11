@@ -1,8 +1,3 @@
-"""
-
-    *Is-Close*
-
-"""
 import jax.numpy as jnp
 
 from ._operator import GeometricProperty

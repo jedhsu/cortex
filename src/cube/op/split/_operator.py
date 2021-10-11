@@ -13,4 +13,3 @@ __all__ = ["SplitOperator"]
 class SplitOperator(
     GeometricOperator,
 ):
-    __metaclass__ = ABCMeta

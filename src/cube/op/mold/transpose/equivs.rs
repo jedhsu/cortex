@@ -1,4 +1,12 @@
-pub trait Transpose {}
+pub trait Transpose {
+    fn equiv1() -> Equiv<Transpose>;
+    fn equiv2() -> Equiv<Transpose>;
+    fn equiv3() -> Equiv<Transpose>;
+    fn equiv4() -> Equiv<Transpose>;
+    fn equiv5() -> Equiv<Transpose>;
+    fn equiv2() -> Equiv<Transpose>;
+}
+
 impl Equiv for Transpose {
     fn equiv1() -> Equiv<Transpose> {
         Let(Transpose(Transpose(x)), x);

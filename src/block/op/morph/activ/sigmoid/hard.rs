@@ -1,5 +1,6 @@
 
-pub struct HardSigmoid;
+pub trait HardSigmoid: Activate {
+}
 
 impl Calibrate for Activate<HardSigmoid> {
     inplace: bool
