@@ -1,7 +1,7 @@
 /// Equivalences for Conv
 impl Equiv for Conv {
     fn equiv1() -> Equiv<Conv, Conv> {
-        Equiv(
+        Let(
             Conv(s, p, c, ScalarMul(𝚇, 𝑤), 𝙮),
             Conv(s, p, c, 𝚇, ScalarMul(𝙮, 𝑤)),
         )
@@ -28,13 +28,19 @@ impl Equiv for Conv {
         )
     }
 
-    fn equiv5() {
+    fn equiv5() -> Equiv<Conv, Conv> {
         Let(Conv(s, Psame, c, 𝚇, 𝙮), Conv(s, Psame, c, 𝚇, Enlarge(k, 𝙮)));
     }
 
-    fn equiv6() {
+    fn equiv6() -> Equiv<Conv> {
         Let(Conv(s, p, Arelu, 𝚇, 𝙮), Relu(Conv(s, p, Anone, 𝚇, 𝙮)));
     }
+}
+
+#[cfg(tests)]
+mod tests {
+    #[test]
+    fn test_equiv1() -> Result<()> {}
 }
 
 ///// Sick

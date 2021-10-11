@@ -1,29 +1,26 @@
-"""
-
-    *Shape,   [Display]*
-
-"""
-from ._shape import Shape
-
-__all__ = ["Display"]
+/// Shape,   [Display]
 
 
-class Display(
-    Shape,
-):
-    def __repr__(self) -> str:
-        return "[" + " - ".join([str(part) for part in self]) + "]"
+impl fml::Display for Shape {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>,) -> fmt::Result  {
+        write!(formatter, "[" + " - ".join([str(part) for part in self]) + "]");
+    }
 
 
-class Test:
-    @staticmethod
-    def vector():
+#[cfg(tests)]
+mod tests {
+    #[test]
+    fn test_vector() {
         return "[5]"
+    }
 
-    @staticmethod
-    def grid():
+    #[test]
+    fn test_grid() {
         return "[5 - 5]"
-
-    @staticmethod
-    def threetope():
+    }
+    
+    #[test]
+    fn test_threetope() {
         return "[5 - 5 - 5]"
+    }
+}

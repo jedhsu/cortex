@@ -4,7 +4,7 @@ use crate::tensor::Tensor;
 #[derive(Debug, Clone, Copy)]
 pub struct BatchNormalization {
     pub cudnn_enabled: bool,
-    
+
     pub eps: f64,
     pub momentum: f64,
 
@@ -12,13 +12,21 @@ pub struct BatchNormalization {
     pub bs_init: super::Init,
 }
 
-pub struct BatchNormalize<N, D> where N: Dimension, D: Datatype {
-    config: BatchNormalization;
-    
-    pub fn weights(&self) -> Tensor<N, D>;
+pub trait BatchNormalize<N, D>
+where
+    N: Dimension,
+    D: Datatype,
+{
+    pub type BatchNormaliation;
+
+    fn weights(&self) -> Tensor<N, D>;
 }
 
-impl Calibrate<N, D> for BatchNormalize where N: Shape, D: Datatype {
+impl Calibrate<N, D> for BatchNormalize
+where
+    N: Shape,
+    D: Datatype,
+{
     fn forward(&self) -> Tensor<N, D>;
 }
 
@@ -26,5 +34,5 @@ impl Calibrate<N, D> for BatchNormalize where N: Shape, D: Datatype {
 //     pub type N;
 
 //     fn iter_batches(&self) -> Iter<Batch>;
-//     // fn calibrate(&self) -> 
+//     // fn calibrate(&self) ->
 // }
